@@ -1,7 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { DirectiveComponent } from '../components/directives/directive/directive.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+    {
+        path: '',
+        component: DirectiveComponent,
+    },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

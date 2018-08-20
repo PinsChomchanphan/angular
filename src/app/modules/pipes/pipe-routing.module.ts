@@ -1,7 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { PipeComponent } from '../components/pipes/pipe/pipe.component';
 
-const routes: Routes = [];
+
+const routes: Routes = [
+    {
+        path: '',
+        component: PipeComponent
+    },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

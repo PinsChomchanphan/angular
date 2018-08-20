@@ -7,15 +7,15 @@ const routes: Routes = [
         loadChildren: './modules/optimization/optimization.module#OptimizationModule'
     },
     {
-        path: 'optimization',
+        path: 'pipe',
         loadChildren: './modules/pipes/pipe.module#PipeModule'
     },
     {
-        path: 'optimization',
+        path: 'directive',
         loadChildren: './modules/directives/directive.module#DirectiveModule'
     },
     {
-        path: 'optimization',
+        path: 'service',
         loadChildren: './modules/services/service.module#ServiceModule'
     },
     {
