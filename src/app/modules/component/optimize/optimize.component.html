@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-9">
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="list-group">
+      <a routerLink="./" class="list-group-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+        On Push
+      </a>
+      <a routerLink="track-by" class="list-group-item" [routerLinkActive]="['active']">
+        Track by
+      </a>
+      <a routerLink="avoid-computing-value" class="list-group-item" [routerLinkActive]="['active']">
+        Avoid Computing Values in the Template
+      </a>
+      <a routerLink="change-detection" class="list-group-item" [routerLinkActive]="['active']">
+        Change Detection
+      </a>
+    </div>
+  </div>
+</div>
