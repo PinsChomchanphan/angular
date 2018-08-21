@@ -5,6 +5,7 @@ import { OptimizeComponent } from '../components/optimizations/optimize/optimize
 import { TrackByComponent } from '../components/optimizations/track-by/track-by.component';
 import { AvoidComputingValueComponent } from '../components/optimizations/avoid-computing-value/avoid-computing-value.component';
 import { ChangeDetectionComponent } from '../components/optimizations/change-detection/change-detection.component';
+import { ObservablesAsyncComponent } from '../components/optimizations/observables-async/observables-async.component';
 
 const routes: Routes = [
     {
@@ -27,6 +28,10 @@ const routes: Routes = [
                 path: 'change-detection',
                 component: ChangeDetectionComponent
             },
+            {
+                path: 'observables-async',
+                component: ObservablesAsyncComponent
+            }
         ]
     },
 ];

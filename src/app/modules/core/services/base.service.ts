@@ -15,7 +15,7 @@ import { tap, finalize, catchError, share } from 'rxjs/operators';
 })
 export class BaseService extends Http {
 
-    apiUrl = 'https://dingo-api.codingo.me/';
+    apiUrl = 'https://jsonplaceholder.typicode.com/';
 
     constructor(
         backend: XHRBackend,
