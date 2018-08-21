@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DynamicfilterPipe } from './pipes/dynamicfilter.pipe';
 import { FormsModule } from '@angular/forms';
+import { UtcToLocalPipe } from './pipes/utc-to-local.pipe';
 
 @NgModule({
     imports: [
@@ -9,11 +10,13 @@ import { FormsModule } from '@angular/forms';
         CommonModule
     ],
     declarations: [
-        DynamicfilterPipe
+        DynamicfilterPipe,
+        UtcToLocalPipe
     ],
     exports: [
         FormsModule,
-        DynamicfilterPipe
+        DynamicfilterPipe,
+        UtcToLocalPipe
     ]
 })
 export class CoreModule { }

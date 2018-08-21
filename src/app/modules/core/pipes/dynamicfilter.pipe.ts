@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-    name: 'dynamicfilter'
+    name: 'dynamicFilter'
 })
 export class DynamicfilterPipe implements PipeTransform {
 

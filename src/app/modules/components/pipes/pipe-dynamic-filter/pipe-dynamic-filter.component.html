@@ -8,7 +8,14 @@
     <div class="card-body" style="height:700px;">
       <div class="row">
         <div class="col-sm-12">
-          <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info"
+          <div class="input-group">
+            <div class="input-group-append">
+              <span class="input-group-text">Search</span>
+            </div>
+            <input type="text" class="form-control" placeholder="search text goes here" [(ngModel)]="searchText">
+          </div>
+          <br>
+          <table class="table table-bordered dataTable table-striped" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info"
             style="width: 100%;">
             <thead>
               <tr role="row">
@@ -27,20 +34,20 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let customer of customers">
-                    <td>{{customer.name}}</td>
-                    <td>{{customer.position}}</td>
-                    <td>{{customer.office}}</td>
-                    <td>{{customer.age}}</td>
-                    <td>{{customer.startDate | date}}</td>
-                    <td>{{customer.salary}}</td>
+              <tr *ngFor="let customer of customers | dynamicFilter : searchText">
+                <td>{{customer.name}}</td>
+                <td>{{customer.position}}</td>
+                <td>{{customer.office}}</td>
+                <td>{{customer.age}}</td>
+                <td>{{customer.startDate | date :'dd-MM-yyyy'}}</td>
+                <td>{{customer.salary | currency}}</td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
-    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM Hello 555</div>
+    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
   </div>
 
 </div>
