@@ -1,0 +1,46 @@
+<div class="container-fluid">
+
+  <!-- Area Chart Example-->
+  <div class="card mb-3">
+    <div class="card-header">
+      <i class="fas fa-chart-area"></i>Dynamic Filter
+    </div>
+    <div class="card-body" style="height:700px;">
+      <div class="row">
+        <div class="col-sm-12">
+          <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info"
+            style="width: 100%;">
+            <thead>
+              <tr role="row">
+                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending"
+                  style="width: 265px;">Name</th>
+                <th class="sorting_desc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending"
+                  style="width: 434px;" aria-sort="descending">Position</th>
+                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending"
+                  style="width: 197px;">Office</th>
+                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending"
+                  style="width: 102px;">Age</th>
+                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending"
+                  style="width: 191px;">Start date</th>
+                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending"
+                  style="width: 158px;">Salary</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let customer of customers">
+                    <td>{{customer.name}}</td>
+                    <td>{{customer.position}}</td>
+                    <td>{{customer.office}}</td>
+                    <td>{{customer.age}}</td>
+                    <td>{{customer.startDate | date}}</td>
+                    <td>{{customer.salary}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+  </div>
+
+</div>
