@@ -9,12 +9,14 @@ import { AvoidComputingValueComponent } from '../components/optimizations/avoid-
 import { ChangeDetectionComponent } from '../components/optimizations/change-detection/change-detection.component';
 import { CoreModule } from '../core/core.module';
 import { ObservablesAsyncComponent } from '../components/optimizations/observables-async/observables-async.component';
+import { PostService } from '../core/services';
 
 @NgModule({
     imports: [
-        CoreModule,
+
         CommonModule,
-        OptimizationRoutingModule
+        OptimizationRoutingModule,
+        CoreModule,
     ],
     declarations: [
         OnpushComponent,
@@ -23,6 +25,9 @@ import { ObservablesAsyncComponent } from '../components/optimizations/observabl
         AvoidComputingValueComponent,
         ChangeDetectionComponent,
         ObservablesAsyncComponent
+    ],
+    providers: [
+        PostService
     ]
 })
 export class OptimizationModule { }

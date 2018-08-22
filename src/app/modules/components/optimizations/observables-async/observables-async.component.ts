@@ -9,9 +9,11 @@ import { PostService } from '../../../core/services';
 })
 export class ObservablesAsyncComponent implements OnInit {
 
+    public posts: any;
     constructor(private service: PostService) { }
 
     ngOnInit() {
+        this.posts = this.service.getPosts();
     }
 
     public loadPosts() {

@@ -23,8 +23,12 @@ const routes: Routes = [
         path: 'service',
         loadChildren: './modules/services/service.module#ServiceModule'
     },
+    // {
+    //     path: 'share-components',
+    //     loadChildren: './modules/module-components/module-component.module#ModuleComponentModule'
+    // },
     {
-        path: '',
+        path: '**',
         redirectTo: '',
         pathMatch: 'full'
     }

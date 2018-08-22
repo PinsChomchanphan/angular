@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PostService } from './modules/core/services';
 
 
 @NgModule({
@@ -14,7 +13,6 @@ import { PostService } from './modules/core/services';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

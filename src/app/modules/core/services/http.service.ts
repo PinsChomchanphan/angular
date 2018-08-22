@@ -1,33 +1,33 @@
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {
-    Http,
-    Response,
-    XHRBackend,
-    RequestOptionsArgs,
-    Headers
-} from '@angular/http';
-import { Observable } from 'rxjs';
-import { AngularReduxRequestOptions } from './angular-redux-request.options';
 import { tap, finalize, catchError, share } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
-@Injectable({
-    providedIn: 'root'
-})
-export class BaseService extends Http {
+export interface IRequestOptions {
+    headers?: HttpHeaders;
+    observe?: 'body';
+    params?: HttpParams;
+    reportProgress?: boolean;
+    responseType?: 'json';
+    withCredentials?: boolean;
+    body?: any;
+}
+
+export function httpClientCreator(http: HttpClient) {
+    return new HttpService(http);
+}
+@Injectable()
+export class HttpService {
 
     apiUrl = 'https://jsonplaceholder.typicode.com/';
 
     constructor(
-        backend: XHRBackend,
-        defaultOptions: AngularReduxRequestOptions
+        public http: HttpClient
     ) {
-        super(backend, defaultOptions);
+
     }
-
-    public get(url: string, options?: RequestOptionsArgs): Observable<any> {
-
-        return super
-            .get(this.getFullUrl(url), this.requestOptions(options))
+    public get<T>(url: string, options?: IRequestOptions): Observable<T> {
+        return this.http.get<T>(this.getFullUrl(url), options)
             .pipe(
                 share(),
                 tap((res: Response) => {
@@ -42,10 +42,9 @@ export class BaseService extends Http {
             );
     }
 
-    public post(url: string, entity: any, options?: RequestOptionsArgs): Observable<any> {
-
-        return super
-            .post(this.getFullUrl(url), entity, this.requestOptions(options))
+    public post<T>(url: string, entity: any, options?: IRequestOptions): Observable<T> {
+        return this.http
+            .post<T>(this.getFullUrl(url), entity, options)
             .pipe(
                 tap((res: Response) => {
                     this.onSuccess(res);
@@ -58,26 +57,10 @@ export class BaseService extends Http {
                 })
             );
     }
-    public put(url: string, entity: any, options?: RequestOptionsArgs): Observable<any> {
+    public put<T>(url: string, entity: any, options?: IRequestOptions): Observable<T> {
 
-        return super
-            .put(this.getFullUrl(url), entity, this.requestOptions(options))
-            .pipe(
-                tap((res: Response) => {
-                    this.onSuccess(res);
-                }, (error: any) => {
-                    this.onError(error);
-                }),
-                catchError(this.onCatch),
-                finalize(() => {
-                    this.onEnd();
-                })
-            );
-    }
-
-    public delete(url: string, options?: RequestOptionsArgs): Observable<any>  {
-        return super
-            .put(this.getFullUrl(url), this.requestOptions(options))
+        return this.http
+            .put<T>(this.getFullUrl(url), entity, options)
             .pipe(
                 tap((res: Response) => {
                     this.onSuccess(res);
@@ -91,18 +74,22 @@ export class BaseService extends Http {
             );
     }
 
-    private requestOptions(options?: RequestOptionsArgs): RequestOptionsArgs {
-
-        if (options == null) {
-            options = new AngularReduxRequestOptions();
-        }
-
-        if (options.headers == null) {
-              options.headers = new Headers();
-        }
-
-        return options;
+    public delete<T>(url: string, options?: IRequestOptions): Observable<T> {
+        return this.http
+            .delete<T>(this.getFullUrl(url), options)
+            .pipe(
+                tap((res: Response) => {
+                    this.onSuccess(res);
+                }, (error: any) => {
+                    this.onError(error);
+                }),
+                catchError(this.onCatch),
+                finalize(() => {
+                    this.onEnd();
+                })
+            );
     }
+
 
     private getFullUrl(url: string): string {
         return this.apiUrl + url;
